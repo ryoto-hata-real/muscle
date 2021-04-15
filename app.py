@@ -13,15 +13,15 @@ from models import models
 from flask_sqlalchemy import SQLAlchemy
 
  
-server = Flask(__name__)
-server.secret_key = 'secret_key'
+app = Flask(__name__)
+app.secret_key = 'secret_key'
 
-server.config.from_object('config')
+app.config.from_object('config')
 
-db = SQLAlchemy(server)
+db = SQLAlchemy(app)
 
 
-@server.route('/')
+@app.route('/')
 def index():
     if not bbslogin.is_login():
         return redirect('\login')
@@ -31,11 +31,11 @@ def index():
         data=data.load_data(),
     )
 
-@server.route('/login')
+@app.route('/login')
 def login():
     return render_template('login.html')
 
-@server.route('/try_login', methods=['POST'])
+@app.route('/try_login', methods=['POST'])
 def try_login():
     user = request.form.get('user', '')
     pw = request.form.get('pw', '')
@@ -44,12 +44,12 @@ def try_login():
         return redirect('/')
     return show_msg('失敗！！！')
 
-@server.route('/logout')
+@app.route('/logout')
 def logout():
     bbslogin.try_logout()
     return show_msg('ログアウトしました')
 
-@server.route('/write', methods=['POST'])
+@app.route('/write', methods=['POST'])
 def write():
     if not bbslogin.is_login():
         return redirect('/login')
@@ -67,7 +67,7 @@ def show_msg(msg):
     return render_template('msg.html', msg=msg)
 
 
-@server.route('/test')
+@app.route('/test')
 def test():
     a = request.args.get('a')
     b = request.args.get('b')
@@ -80,7 +80,7 @@ def test():
     else:
         return str(int(a) * int(b))
 
-@server.route('/kyokin')
+@app.route('/kyokin')
 def input_page():
     filter_date = datetime.date.today()
     print(filter_date)
@@ -88,7 +88,7 @@ def input_page():
     entries = models.MascleData.query.filter(models.MascleData.done_at>datetime.date.today()).order_by(models.MascleData.id.desc()).all()
     return render_template('kyokin.html',entries=entries)
     
-@server.route('/add', methods=['POST'])
+@app.route('/add', methods=['POST'])
 def add_entry():
     try:
 
@@ -111,5 +111,5 @@ def add_entry():
 
 
 if __name__ == '__main__':
-    server.run(debug=True)
+    app.run(debug=True)
  
