@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block h2 %}入力画面：胸筋{% endblock %}
+{% block contents %}
+    <form action="{{ url_for('add_entry') }}" method="post" class="uk-flex">
+        <input type="text" class="uk-width-1-4" placeholder="種目" name="kind_of_mascle">
+        <input type="number" class="uk-width-1-4" placeholder="重量" name ="weight">
+        <div class="spinner_area weight uk-width-1-4 uk-flex">
+            <input type="number" value="10" class="weight-counter" data-max="500" data-min="0" name="reps">
+            <input type="button" value="＋" class="btnspinner spiner_add" data-cal="1" data-target=".weight-counter">
+            <input type="button" value="－" class="btnspinner spiner_sub" data-cal="-1" data-target=".weight-counter">
+        </div>
+        
+        <label class="uk-width-1-4">
+            <span class="uk-margin-small-right cercle" uk-icon="icon: check; ratio: 1.5"></span>
+            <input class="hidden-button" type="submit" value="完了">
+        </label>
+    </form>
+    {% if massage %}
+        <p>{{massage}}</p>
+    {% endif %}
+    {% if not entries %}
+        <p>今日はまだ筋トレしてません</p>
+    {% endif %}
+    <ul class=entries>
+        {% for entry in entries %}
+            <li><h2>{{ entry.kind_of_mascle }}</h2>
+              <p>{{ entry.weight }}  kg</p>
+              <p>{{ entry.reps }} reps</p>
+              <p>{{ entry.done_at }} reps</p>
+            </li>
+        {% endfor %}
+    </ul>
+    
+{% endblock %}
+{% block script %}
+{% endblock %}

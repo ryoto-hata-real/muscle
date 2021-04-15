@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/uikit.min.css')}}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+        <script type="text/javascript" src="{{ url_for('static', filename='js/uikit.min.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/uikit-icons.min.js') }}"></script>
+        
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    </head>
+    
+    <header>
+        <h1>ぼくの筋トレ日記</h1>
+        <nav></nav>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="">入力画面</a></li>
+            <li><a href="">一覧</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>
+            {% block h2 %}
+            {% endblock %}
+        </h2>
+        <div>
+            {% block contents %}
+            {% endblock %}
+        </div>
+    </main>
+    
+        
+    {% block script %}
+    {% endblock %}
+    <script type="text/javascript" src="{{ url_for('static', filename='js/original.js') }}"></script>
+    <footer>
+        <div>フッター</div>
+    </footer>
+</html>

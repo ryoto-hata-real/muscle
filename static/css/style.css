@@ -1,0 +1,167 @@
+h1 {
+    background-color: rgb(196, 129, 196);
+    color:white;
+    padding:12px;
+    width:100%
+}
+
+h3{
+    background-color: aquamarine;
+}
+
+header{
+    background-color: rgb(196, 129, 196);
+    grid-area:header;
+}
+
+footer {
+    
+    background-color: rgb(100, 100, 100);
+    color:white;
+    grid-area:footer;
+}
+
+body {
+    display: grid;
+    grid-template:
+        "header header header" 100px
+        "nav    main   main  " 1fr
+        "footer footer footer" 200px
+        / 25%;
+    gap:10px;
+
+}
+
+nav {
+    grid-area: nav;
+    padding:30px 0 0 30px;
+}
+
+main {
+    min-height:100vh;
+    grid-area: main;
+    padding-top:30px;
+}
+
+@media screen and(max-width:800px){
+    main {
+        width:100%
+    }
+}
+
+div#desc{
+    padding-left: 3em;
+    border:1px solid red;
+}
+
+.userinfo{
+    border: 1px solid red;
+    border-radius: 2px;
+    margin:2px;
+    padding: 3px 13px 3px 13px;
+}
+
+.choice_part{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.part:before{
+    content:"";
+    display: block;
+    padding-top: 100%;
+    background-color: rebeccapurple;
+    border-radius:50%;
+}
+
+.part{
+    width:250px;
+    margin:25px;
+    text-align: center;
+    vertical-align: middle;
+    color:white;
+    font-size: large;
+    font-weight: 900;
+}
+.adjust-box {
+    position: relative;
+    width: 200px;
+    height: auto;
+    border-radius: 50%;
+    margin:30px;
+    background: rgb(255, 0, 157);
+}
+.box-1x1:before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+}
+.inner {
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.adjust-box p {
+    line-height:1.5em;
+    color:white;
+    font-size: xx-large;
+    font-weight: 900;
+    text-align: center;
+    vertical-align: middle;
+}
+.adjust-box p:before{
+    padding-top: 100%;
+}
+
+.hidden-button {
+    display: none;
+    width:50px
+}
+
+.cercle {
+    border:1px solid black;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.cercle:hover {
+    background-color: rgb(190, 190, 190);
+}
+
+.btnspinner{
+    -ms-user-select: none;
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.spinner_area input{
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 18px;
+    vertical-align: middle;
+    /* デフォルトのスピナーを消す */
+    -webkit-appearance: none;
+    -moz-appearance:textfield;
+}
+
+.spinner_area input[type="button"]{
+    cursor: pointer;
+}
+
+.weight-counter{
+    width:50px;
+    text-align: center;
+}
+input {
+    margin:2px;
+}
+
+.adjust-box:hover{
+    background-color: brown;
+}
